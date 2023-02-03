@@ -82,10 +82,9 @@ class Laratables
      */
     protected function applyFiltersTo()
     {
-        $searchValue = request('search')['value'];
-
-        if ($searchValue) {
-            $this->queryHandler->applyFilters($this->columnManager->getSearchColumns(), $searchValue);
+        $searchValue = request('search');
+        if (isset($searchValue) and isset($searchValue['value'])) {
+            $this->queryHandler->applyFilters($this->columnManager->getSearchColumns(), $searchValue['value']);
         }
     }
 
